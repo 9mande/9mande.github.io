@@ -123,7 +123,7 @@
 
 			function makeCalender(){
 				var calendar = [];
-				var days = ['월', '화', '수', '목', '금', '토', '일'];
+				var days = ['일', '월', '화', '수', '목', '금', '토'];
 				for (let i=0; i<last_date; i++){
 					calendar.push(i+1, days[(first_day+i)%7], (first_day+i)%7, parseInt((first_day+i)/7));
 				}	
@@ -150,14 +150,14 @@
 				// table
 
 				for ( let i = 0; i < table.length; i += 4 ) {
-					
+
 					const element = document.createElement( 'div' );
 					element.className = 'element';
 					element.style.backgroundColor = 'rgba(0,127,127,' + ( Math.random() * 0.5 + 0.25 ) + ')';
 
 					const number = document.createElement( 'div' );
 					number.className = 'number';
-					number.textContent = ( i / 5 ) + 1;
+					number.textContent = ( i / 4 ) + 1;
 					element.appendChild( number );
 
 					const symbol = document.createElement( 'div' );
