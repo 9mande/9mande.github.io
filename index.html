@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>three.js css3d - periodic table</title>
+		<title>three.js css3d - Calendar</title>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
 		<link type="text/css" rel="stylesheet" href="main.css">
@@ -9,6 +9,10 @@
 			a {
 				color: #8ff;
 			}
+
+            body{
+                background-color: #000;
+            }
 
 			#menu {
 				position: absolute;
@@ -117,9 +121,9 @@
 			today = new Date();
 			year = today.getFullYear();
 			month = today.getMonth();
-			first_date = new Date(year, month, 1).getDate();
-			last_date = new Date(year, month+1, 0).getDate();
-			first_day = new Date(year, month, 1).getDay();
+			first_date = new Date(year, month-1, 1).getDate();
+			last_date = new Date(year, month+2, 0).getDate();
+			first_day = new Date(year, month-1, 1).getDay();
 
 			function makeCalender(){
 				var calendar = [];
@@ -129,7 +133,7 @@
 				}	
 				return calendar;
 			}
-			const table = makeCalender();
+			let table = makeCalender();
 
 			let camera, scene, renderer;
 			let controls;
