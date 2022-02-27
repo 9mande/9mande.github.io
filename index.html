@@ -123,8 +123,9 @@
 
 			function makeCalender(){
 				var calendar = [];
+				var days = ['월', '화', '수', '목', '금', '토', '일'];
 				for (let i=0; i<last_date; i++){
-					calendar.push(i+1, 'a', 'b', (first_day+i)%7, (first_day+i)/7);
+					calendar.push(i+1, days[(first_day+i)%7], (first_day+i)%7, parseInt((first_day+i)/7));
 				}	
 				return calendar;
 			}
@@ -166,7 +167,7 @@
 
 					const details = document.createElement( 'div' );
 					details.className = 'details';
-					details.innerHTML = table[ i + 1 ] + '<br>' + table[ i + 2 ];
+					details.innerHTML = table[ i + 1 ];
 					element.appendChild( details );
 
 					const objectCSS = new CSS3DObject( element );
@@ -180,8 +181,8 @@
 					//
 
 					const object = new THREE.Object3D();
-					object.position.x = ( table[ i + 3 ] * 140 ) - 1330;
-					object.position.y = - ( table[ i + 4 ] * 180 ) + 990;
+					object.position.x = ( table[ i + 2 ] * 140 ) - 1330;
+					object.position.y = - ( table[ i + 3 ] * 180 ) + 990;
 
 					targets.table.push( object );
 
