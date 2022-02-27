@@ -124,7 +124,7 @@
 			function makeCalender(){
 				let table = new Array(last_date * 4)
 				for (let i=0; i<last_date; i++){
-					table.push(str(i+1), 'a', 'b', first_day+i, (first_day+i)/7);
+					table.push(str(i+1), 'a', 'b', (first_day+i)%7, (first_day+i)/7);
 				}
 			}
 
