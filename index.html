@@ -122,9 +122,9 @@
 			first_day = new Date(year, month, 1).getDay();
 
 			function makeCalender(){
-				let table = new Array()
+				let table = new Array();
 				for (let i=0; i<last_date; i++){
-					table.push(str(i+1), 'a', 'b', (first_day+i)%7, (first_day+i)/7);
+					table = table.push(str(i+1), 'a', 'b', (first_day+i)%7, (first_day+i)/7);
 				}
 			}
 
