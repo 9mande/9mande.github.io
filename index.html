@@ -177,17 +177,17 @@
 
 						const number = document.createElement( 'div' );
 						number.className = 'number';
-						number.textContent = ( i / 5 ) + 1;
+						number.textContent = ( j / 5 ) + 1;
 						element.appendChild( number );
 
 						const symbol = document.createElement( 'div' );
 						symbol.className = 'symbol';
-						symbol.textContent = table[ i ];
+						symbol.textContent = table[ j ];
 						element.appendChild( symbol );
 
 						const details = document.createElement( 'div' );
 						details.className = 'details';
-						details.innerHTML = table[ i + 1 ] + '<br>' + table[ i + 2 ];
+						details.innerHTML = table[ j + 1 ] + '<br>' + table[ j + 2 ];
 						element.appendChild( details );
 
 						const objectCSS = new CSS3DObject( element );
@@ -201,8 +201,8 @@
 						//
 
 						const object = new THREE.Object3D();
-						object.position.x = ( table[ i + 3 ] * 140 ) - 1330 + _x;
-						object.position.y = - ( table[ i + 4 ] * 180 ) + 990 - _y;
+						object.position.x = ( table[ j + 3 ] * 140 ) - 1330 + _x;
+						object.position.y = - ( table[ j + 4 ] * 180 ) + 990 - _y;
 
 						targets.table.push( object );
 					}
