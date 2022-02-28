@@ -145,7 +145,7 @@
 
 				var calendar = [];
 
-				for(let month=1; month<=12; month++){
+				for(let month = 1; month <= 12; month++){
 					calendar.push(makeCalendar(year, month))
 				}
 
@@ -171,9 +171,10 @@
 				scene = new THREE.Scene();
 
 				// table
+				var _x, _y;
 
 				for ( let i = 0; i < table.length; i++){
-					var _x = 1180 * (i % 4) , _y = 1100 * parseInt(i / 4);
+					_x = 1180 * (i % 4) , _y = 1100 * parseInt(i / 4);
 
 					for ( let j = 0; j < table[i].length; j += 5){
 						const element = document.createElement( 'div' );
