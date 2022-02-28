@@ -145,7 +145,7 @@
 
 				var calendar = [];
 
-				for(let month = 1; month <= 12; month++){
+				for(let month=1; month<=12; month++){
 					calendar.push(makeCalendar(year, month))
 				}
 
@@ -187,12 +187,12 @@
 
 						const symbol = document.createElement( 'div' );
 						symbol.className = 'symbol';
-						symbol.textContent = i[ j ];
+						symbol.textContent = table[ i ][ j ];
 						element.appendChild( symbol );
 
 						const details = document.createElement( 'div' );
 						details.className = 'details';
-						details.innerHTML = i[ j + 1 ] + '<br>' + i[ j + 2 ];
+						details.innerHTML = table[ i ][ j + 1 ] + '<br>' + table[ i ][ j + 2 ];
 						element.appendChild( details );
 
 						const objectCSS = new CSS3DObject( element );
@@ -206,8 +206,8 @@
 						//
 
 						const object = new THREE.Object3D();
-						object.position.x = ( i[ j + 3 ] * 140 ) - 1330 + _x;
-						object.position.y = - ( i[ j + 4 ] * 180 ) + 990 - _y;
+						object.position.x = ( table [ i ][ j + 3 ] * 140 ) - 1330 + _x;
+						object.position.y = - ( table[ i ][ j + 4 ] * 180 ) + 990 - _y;
 
 						targets.table.push( object );
 					}
