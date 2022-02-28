@@ -116,24 +116,38 @@
 			import { CSS3DRenderer, CSS3DObject } from './js/CSS3DRenderer.js';
 
 
-			let today, year, month, first_date, last_date, first_day;
+			let today, year, month;
 
 			today = new Date();
 			year = today.getFullYear();
 			month = today.getMonth();
-			first_date = new Date(year, month, 1).getDate();
-			last_date = new Date(year, month+1, 0).getDate();
-			first_day = new Date(year, month, 1).getDay();
 
-			function makeCalender(){
+			function makeCalendar(year, month){
+				let first_date, last_date, first_day;
+
+				first_date = new Date(year, month, 1).getDate();
+				last_date = new Date(year, month+1, 0).getDate();
+				first_day = new Date(year, month, 1).getDay();
+
 				var calendar = [];
+
 				var days = ['일', '월', '화', '수', '목', '금', '토'];
 				for (let i=0; i<last_date; i++){
-					calendar.push(i+1, days[(first_day+i)%7], (first_day+i)%7, parseInt((first_day+i)/7));
+					calendar.push(i+1, days[(first_day+i)%7], 'ㅁㄴㅇㄹ', (first_day+i)%7, parseInt((first_day+i)/7));
 				}	
+
 				return calendar;
 			}
-			let table = makeCalender();
+
+			function makeYearlyCalendar(year){
+				var calendar = [];
+				for(let month=1; month<=12; month++){
+					calendar.push(makeCalendar(year, month))
+				}
+				return calendar;
+			}
+
+			let table = makeYearlyCalendar(year);
 
 			let camera, scene, renderer;
 			let controls;
@@ -144,6 +158,7 @@
 			init();
 			animate();
 
+
 			function init() {
 
 				camera = new THREE.PerspectiveCamera( 40, window.innerWidth / window.innerHeight, 1, 10000 );
@@ -153,43 +168,45 @@
 
 				// table
 
-				for ( let i = 0; i < table.length; i += 4 ) {
+				for ( let i = 0; i < table.length; i++){
+					var _x = 1180 * (i % 4) , _y = 1100 * parseInt(i / 4);
 
-					const element = document.createElement( 'div' );
-					element.className = 'element';
-					element.style.backgroundColor = 'rgba(0,127,127,' + ( Math.random() * 0.5 + 0.25 ) + ')';
+					for ( let j = 0; j < i.length; j += 5){
+						const element = document.createElement( 'div' );
+						element.className = 'element';
+						element.style.backgroundColor = 'rgba(0,127,127,' + ( Math.random() * 0.5 + 0.25 ) + ')';
 
-					const number = document.createElement( 'div' );
-					number.className = 'number';
-					number.textContent = ( i / 4 ) + 1;
-					element.appendChild( number );
+						const number = document.createElement( 'div' );
+						number.className = 'number';
+						number.textContent = ( i / 5 ) + 1;
+						element.appendChild( number );
 
-					const symbol = document.createElement( 'div' );
-					symbol.className = 'symbol';
-					symbol.textContent = table[ i ];
-					element.appendChild( symbol );
+						const symbol = document.createElement( 'div' );
+						symbol.className = 'symbol';
+						symbol.textContent = table[ i ];
+						element.appendChild( symbol );
 
-					const details = document.createElement( 'div' );
-					details.className = 'details';
-					details.innerHTML = table[ i + 1 ];
-					element.appendChild( details );
+						const details = document.createElement( 'div' );
+						details.className = 'details';
+						details.innerHTML = table[ i + 1 ] + '<br>' + table[ i + 2 ];
+						element.appendChild( details );
 
-					const objectCSS = new CSS3DObject( element );
-					objectCSS.position.x = Math.random() * 4000 - 2000;
-					objectCSS.position.y = Math.random() * 4000 - 2000;
-					objectCSS.position.z = Math.random() * 4000 - 2000;
-					scene.add( objectCSS );
+						const objectCSS = new CSS3DObject( element );
+						objectCSS.position.x = Math.random() * 4000 - 2000;
+						objectCSS.position.y = Math.random() * 4000 - 2000;
+						objectCSS.position.z = Math.random() * 4000 - 2000;
+						scene.add( objectCSS );
 
-					objects.push( objectCSS );
+						objects.push( objectCSS );
 
-					//
+						//
 
-					const object = new THREE.Object3D();
-					object.position.x = ( table[ i + 2 ] * 140 ) - 1330;
-					object.position.y = - ( table[ i + 3 ] * 180 ) + 990;
+						const object = new THREE.Object3D();
+						object.position.x = ( table[ i + 3 ] * 140 ) - 1330 + _x;
+						object.position.y = - ( table[ i + 4 ] * 180 ) + 990 + _y;
 
-					targets.table.push( object );
-
+						targets.table.push( object );
+					}
 				}
 
 				// sphere
