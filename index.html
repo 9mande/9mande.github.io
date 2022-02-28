@@ -123,6 +123,7 @@
 			month = today.getMonth();
 
 			function makeCalendar(year, month){
+
 				let first_date, last_date, first_day;
 
 				first_date = new Date(year, month, 1).getDate();
@@ -132,6 +133,7 @@
 				var calendar = [];
 
 				var days = ['일', '월', '화', '수', '목', '금', '토'];
+
 				for (let i=0; i<last_date; i++){
 					calendar.push(i+1, days[(first_day+i)%7], 'ㅁㄴㅇㄹ', (first_day+i)%7, parseInt((first_day+i)/7));
 				}	
@@ -140,10 +142,13 @@
 			}
 
 			function makeYearlyCalendar(year){
+
 				var calendar = [];
+
 				for(let month=1; month<=12; month++){
 					calendar.push(makeCalendar(year, month))
 				}
+
 				return calendar;
 			}
 
@@ -182,12 +187,12 @@
 
 						const symbol = document.createElement( 'div' );
 						symbol.className = 'symbol';
-						symbol.textContent = table[ j ];
+						symbol.textContent = i[ j ];
 						element.appendChild( symbol );
 
 						const details = document.createElement( 'div' );
 						details.className = 'details';
-						details.innerHTML = table[ j + 1 ] + '<br>' + table[ j + 2 ];
+						details.innerHTML = i[ j + 1 ] + '<br>' + i[ j + 2 ];
 						element.appendChild( details );
 
 						const objectCSS = new CSS3DObject( element );
@@ -201,8 +206,8 @@
 						//
 
 						const object = new THREE.Object3D();
-						object.position.x = ( table[ j + 3 ] * 140 ) - 1330 + _x;
-						object.position.y = - ( table[ j + 4 ] * 180 ) + 990 - _y;
+						object.position.x = ( i[ j + 3 ] * 140 ) - 1330 + _x;
+						object.position.y = - ( i[ j + 4 ] * 180 ) + 990 - _y;
 
 						targets.table.push( object );
 					}
