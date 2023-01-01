@@ -10,6 +10,3 @@ tags: [Computer Networks]
 #   height: 500
 #   alt: Responsive rendering of Chirpy theme on multiple devices.
 ---
-
-
-hello first post
