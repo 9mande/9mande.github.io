@@ -1,5 +1,5 @@
 ---
-title: 클래스의 이해
+title: Class in Java
 author: 9mande
 date: 2023-01-22 23:01:00 +0900
 categories: [Study]
