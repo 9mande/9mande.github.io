@@ -1,7 +1,7 @@
 ---
 title: Class in Java
 date: 2023-01-22 23:01:00 +0900
-categories: [Study]
+categories: [Java]
 tags: [java, oop]
 ---
 
