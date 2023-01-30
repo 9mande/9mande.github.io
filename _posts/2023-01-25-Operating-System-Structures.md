@@ -1,6 +1,6 @@
 ---
 title: Operating System Structures
-date: 2023-01-30 15:47:00 +0900
+date: 2023-01-25 15:47:00 +0900
 categories: [OS]
 tags: [os, system]
 ---

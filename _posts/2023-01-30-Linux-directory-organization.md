@@ -1,5 +1,5 @@
 ---
-title: Linux directory organization
+title: Linux Directory Organization
 date: 2023-01-30 15:47:00 +0900
 categories: [Linux]
 tags: [linux, ubuntu]
